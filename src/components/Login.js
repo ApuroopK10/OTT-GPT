@@ -1,10 +1,69 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Header from "./Header";
+import { isValidData } from "../utils/validate";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { auth } from "../utils/firebase";
 
 const Login = () => {
   const [isSignIn, setIsSignIn] = useState(true);
+  const [errorMsg, setErrorMsg] = useState(null);
+  const email = useRef(null);
+  const password = useRef(null);
+  const fullName = useRef(null);
+
   const toggleForm = () => {
     setIsSignIn(!isSignIn);
+    setErrorMsg(null);
+    email.current.value = null;
+    password.current.value = null;
+  };
+
+  const handleFormSubmit = () => {
+    // Validate form
+    const message = isValidData(
+      email.current.value,
+      password.current.value,
+      isSignIn ? false : fullName.current.value
+    );
+    setErrorMsg(message);
+    if (!message) {
+      if (isSignIn) {
+        signInWithEmailAndPassword(
+          auth,
+          email.current.value,
+          password.current.value
+        )
+          .then((userCredential) => {
+            // Signed in
+            const user = userCredential.user;
+            console.log(user, "succeess");
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            setErrorMsg(errorMessage + "-" + errorCode);
+          });
+      } else {
+        createUserWithEmailAndPassword(
+          auth,
+          email.current.value,
+          password.current.value
+        )
+          .then((userCredential) => {
+            // Signed up
+            const user = userCredential.user;
+            console.log(user, "succeess");
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            setErrorMsg(errorMessage + "-" + errorCode);
+          });
+      }
+    }
   };
   return (
     <div>
@@ -21,22 +80,30 @@ const Login = () => {
         </h1>
         {!isSignIn && (
           <input
+            ref={fullName}
             type="text"
             placeholder="Full Name"
             className="p-3 my-3 w-full bg-gray-600 rounded-sm"
           />
         )}
         <input
+          ref={email}
           type="text"
           placeholder="Enter Email address"
           className="p-3 my-3 w-full bg-gray-600 rounded-sm"
         />
         <input
+          ref={password}
           type="password"
           placeholder="Enter Password"
           className="p-3 my-3 w-full bg-gray-600 rounded-sm"
         />
-        <button className="p-3 my-3 bg-red-800 font-bold w-full rounded-lg">
+        {errorMsg && <p className="text-red-600 font-bold py-2">{errorMsg}</p>}
+        <button
+          type="button"
+          className="p-3 my-3 bg-red-800 font-bold w-full rounded-lg"
+          onClick={handleFormSubmit}
+        >
           {isSignIn ? "Sign In" : "Sign Up"}
         </button>
         <p className="p-2 m-2 cursor-pointer" onClick={toggleForm}>
