@@ -1,1 +1,1 @@
-# A React based OTT app powered by GPT APIs.
+# A React based Netflix OTT app powered by GPT APIs.
