@@ -10,7 +10,7 @@ const Header = () => {
   const navigate = useNavigate();
   const userData = useSelector((store) => store.user);
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         // User is signed in
         const { uid, email, displayName } = user;
@@ -23,6 +23,7 @@ const Header = () => {
         navigate("/");
       }
     });
+    return () => unsubscribe();
   }, []);
   const handleSignOut = () => {
     signOut(auth)
