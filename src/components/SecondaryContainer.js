@@ -1,15 +1,21 @@
 import React from "react";
 import MovieList from "./MovieList";
 import { useSelector } from "react-redux";
+import { ALL_CATS_ARRAY, CATS_ARRAY_LABEL } from "../utils/constants";
 
 const SecondaryContainer = () => {
   const movies = useSelector((store) => store.movies);
   return (
-    movies?.nowPlayingMovies && (
+    movies?.allCats && (
       <div className=" bg-black">
-        <div className="-mt-52 relative z-30">
-          <MovieList title={"Now Playing"} movies={movies.nowPlayingMovies} />
-          {/* make it dynamic */}
+        <div className="-mt-44 relative z-30">
+          {CATS_ARRAY_LABEL.map((eachCat, catIndex) => (
+            <MovieList
+              key={eachCat}
+              title={eachCat}
+              movies={movies?.allCats[catIndex]?.results}
+            />
+          ))}
         </div>
       </div>
     )

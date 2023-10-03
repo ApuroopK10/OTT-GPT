@@ -20,7 +20,6 @@ const useMovieCategories = (types) => {
       })
     );
     dispatch(addAllCats(catDataArray));
-    console.log(catDataArray);
   };
   useEffect(() => {
     fetchAllCats();

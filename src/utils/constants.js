@@ -13,3 +13,17 @@ export const API_OPTIONS = {
 export const NOW_PLAYING =
   "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1";
 export const IMG_CDN = "https://image.tmdb.org/t/p/w500";
+export const FETCH_CATEGORIES =
+  "https://api.themoviedb.org/3/movie/{type}?language=en-US&page=1";
+export const ALL_CATS_ARRAY = [
+  "now_playing",
+  "upcoming",
+  "popular",
+  "top_rated",
+];
+export const CATS_ARRAY_LABEL = [
+  "Now Playing",
+  "Upcoming",
+  "Popular",
+  "Top Rated",
+];
