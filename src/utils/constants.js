@@ -27,3 +27,15 @@ export const CATS_ARRAY_LABEL = [
   "Popular",
   "Top Rated",
 ];
+export const BG_HOME_IMG =
+  "https://assets.nflxext.com/ffe/siteui/vlv3/9db4a880-3034-4e98-bdea-5d983e86bf52/b5953637-091d-4e02-9754-2bfadc8a8f7c/IN-en-20230925-popsignuptwoweeks-perspective_alpha_website_medium.jpg";
+export const LANG_SELECTOR = [
+  {
+    id: "en",
+    label: "English",
+  },
+  {
+    id: "es",
+    label: "Spanish",
+  },
+];
