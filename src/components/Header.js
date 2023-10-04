@@ -43,8 +43,8 @@ const Header = () => {
     dispatch(updateLocale(event.target.value));
   };
   return (
-    <div className="w-screen absolute px-8 py-2 bg-gradient-to-b from-black z-20 flex justify-between">
-      <img className="w-44" alt="logo" src={LOGO_URL} />
+    <div className="w-screen absolute px-8 py-2 bg-gradient-to-b from-black z-20 flex flex-col md:flex-row justify-between">
+      <img className="w-36 md:w-44 m-auto md:m-0" alt="logo" src={LOGO_URL} />
       {userData && (
         <div className="flex items-center justify-center">
           {gptData?.showGptSearch && (

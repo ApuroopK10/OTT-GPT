@@ -6,10 +6,10 @@ export const API_OPTIONS = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3NDliYTFhNTQzMmRhMjA5OGM5ZWZjNmRiYzE5ZDEwOCIsInN1YiI6IjY1MTkxZjkyOWQ1OTJjMDE0MjYwZmM4ZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.d8kywHOKV4phhvou9B07aTlabKTFGYps8xf_7OI34nk",
+    Authorization: "Bearer " + process.env.REACT_APP_OPENAI_KEY,
   },
 };
+export const OPENAI_KEY = process.env.REACT_APP_OPENAI_KEY;
 export const NOW_PLAYING =
   "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1";
 export const IMG_CDN = "https://image.tmdb.org/t/p/w500";
