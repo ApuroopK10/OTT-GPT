@@ -1,9 +1,10 @@
 import { useEffect } from "react";
 import { API_OPTIONS, FETCH_CATEGORIES } from "../utils/constants";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addAllCats } from "../utils/moviesSlice";
 
 const useMovieCategories = (types) => {
+  const allCatsData = useSelector((store) => store.allCats);
   const dispatch = useDispatch();
   const fetchAllCats = async () => {
     const fetchCatsArr = [];
@@ -22,7 +23,7 @@ const useMovieCategories = (types) => {
     dispatch(addAllCats(catDataArray));
   };
   useEffect(() => {
-    fetchAllCats();
+    !allCatsData && fetchAllCats();
   }, []);
 };
 

@@ -8,7 +8,7 @@ const SecondaryContainer = () => {
   return (
     movies?.allCats && (
       <div className=" bg-black">
-        <div className="-mt-44 relative z-30">
+        <div className="mt-0 md:-mt-44 relative z-30">
           {CATS_ARRAY_LABEL.map((eachCat, catIndex) => (
             <MovieList
               key={eachCat}
