@@ -6,10 +6,12 @@ export const API_OPTIONS = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization: "Bearer " + process.env.REACT_APP_OPENAI_KEY,
+    Authorization:
+      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3NDliYTFhNTQzMmRhMjA5OGM5ZWZjNmRiYzE5ZDEwOCIsInN1YiI6IjY1MTkxZjkyOWQ1OTJjMDE0MjYwZmM4ZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.d8kywHOKV4phhvou9B07aTlabKTFGYps8xf_7OI34nk",
+    //  + process.env.REACT_APP_TMDB_API_KEY,
   },
 };
-export const OPENAI_KEY = process.env.REACT_APP_OPENAI_KEY;
+export const OPENAI_KEY = "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";
 export const NOW_PLAYING =
   "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1";
 export const IMG_CDN = "https://image.tmdb.org/t/p/w500";
@@ -39,3 +41,27 @@ export const LANG_SELECTOR = [
     label: "Spanish",
   },
 ];
+export const GENRE_DATA = {
+  12: "Adventure",
+  14: "Fantasy",
+  16: "Animation",
+  18: "Drama",
+  27: "Horror",
+  28: "Action",
+  35: "Comedy",
+  36: "History",
+  37: "Western",
+  53: "Thriller",
+  80: "Crime",
+  99: "Documentary",
+  878: "Science Fiction",
+  9648: "Mystery",
+  10402: "Music",
+  10749: "Romance",
+  10751: "Family",
+  10752: "War",
+  10770: "TV Movie",
+};
+
+export const MOVIE_VIDEOS =
+  "https://api.themoviedb.org/3/movie/{movie_id}/videos?language=en-US";
