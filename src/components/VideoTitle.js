@@ -1,9 +1,13 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { toggleAudio } from "../utils/moviesSlice";
 
 const VideoTitle = ({ title, overview }) => {
+  const dispatch = useDispatch();
   const [toggleBtn, setToggleBtn] = useState(false);
   const handleToggleBtn = () => {
     setToggleBtn(!toggleBtn);
+    dispatch(toggleAudio());
   };
   return (
     <div className="absolute px-8 md:px-12 pt-[35%] md:pt-[20%] text-white w-screen aspect-video bg-gradient-to-r from-black">
